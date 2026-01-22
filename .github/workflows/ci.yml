@@ -1,0 +1,23 @@
+name: Integración Continua (Node.js)
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  calidad-codigo:
+    runs-on: ubuntu-latest
+    steps:
+      - [cite_start]name: Checkout del código [cite: 45]
+        uses: actions/checkout@v4
+      - [cite_start]name: Instalar Node.js [cite: 48]
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - [cite_start]name: Instalar dependencias [cite: 54]
+        run: npm ci
+      - [cite_start]name: Ejecutar Linter [cite: 57]
+        run: npm run lint
+      - [cite_start]name: Ejecutar Tests [cite: 60]
+        run: npm test
