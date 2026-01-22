@@ -1,3 +1,4 @@
+/* global test, expect */
 const { determinarEstado } = require('./logic');
 
 test('Debe aprobar con 70', () => {
